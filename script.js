@@ -1,22 +1,26 @@
 AOS.init();
 document.addEventListener('DOMContentLoaded', function() {
-let lastScrollTop = 0;
-const header = document.getElementById('header');
+    let lastScrollTop = 0;
+    const header = document.getElementById('header');
+    const headerHeight = header.offsetHeight;
 
-window.addEventListener('scroll', function() {
-const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-if (scrollTop > lastScrollTop) {
-   
-    header.style.top = '-60px'; 
-} else {
-    
-    header.style.top = '0';
-}
+       
+        if (scrollTop > lastScrollTop && scrollTop > headerHeight) {
+            
+            header.style.top = `-${headerHeight}px`; 
+        } else if (scrollTop < lastScrollTop) {
+           
+            header.style.top = '0';
+        }
 
-lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+     
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+    });
 });
-});
+
 
 document.addEventListener('DOMContentLoaded', function() {
 let lastScrollTop = 0;
